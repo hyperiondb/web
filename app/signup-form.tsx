@@ -91,8 +91,8 @@ export default function SignupForm() {
           </svg>
         </span>
         <div>
-          <h3>You&apos;re on the list.</h3>
-          <p>We&apos;ll email {email.trim()} the moment HyperionDB launches.</p>
+          <h3>Almost there — check your inbox.</h3>
+          <p>We sent a confirmation link to {email.trim()}. Click it to finish subscribing.</p>
         </div>
       </div>
     </div>

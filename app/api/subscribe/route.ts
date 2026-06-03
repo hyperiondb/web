@@ -1,14 +1,9 @@
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export async function POST(request: Request) {
-  const token = process.env.MAILERLITE_API_TOKEN;
-  if (!token) {
-    return Response.json(
-      { error: "Subscription is not configured." },
-      { status: 500 }
-    );
-  }
+const MAILERLITE_ACCOUNT = process.env.MAILERLITE_ACCOUNT_ID ?? "2403256";
+const MAILERLITE_FORM = process.env.MAILERLITE_FORM_ID ?? "189254570450355612";
 
+export async function POST(request: Request) {
   let email: unknown;
   try {
     const data = await request.json();
@@ -24,21 +19,25 @@ export async function POST(request: Request) {
     );
   }
 
-  const groupId = process.env.MAILERLITE_GROUP_ID;
-  const payload: Record<string, unknown> = { email: email.trim() };
-  if (groupId) payload.groups = [groupId];
+  const body = new URLSearchParams();
+  body.set("fields[email]", email.trim());
+  body.set("ml-submit", "1");
+  body.set("anticsrf", "true");
 
   let res: Response;
   try {
-    res = await fetch("https://connect.mailerlite.com/api/subscribers", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(payload),
-    });
+    res = await fetch(
+      `https://assets.mailerlite.com/jsonp/${MAILERLITE_ACCOUNT}/forms/${MAILERLITE_FORM}/subscribe`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          Accept: "application/json",
+          "X-Requested-With": "XMLHttpRequest",
+        },
+        body,
+      }
+    );
   } catch (err) {
     console.error("MailerLite request failed:", err);
     return Response.json(
@@ -47,20 +46,12 @@ export async function POST(request: Request) {
     );
   }
 
-  if (res.ok) {
+  const result = await res.json().catch(() => null);
+  if (res.ok && result?.success) {
     return Response.json({ ok: true });
   }
 
-  const detail = await res.text().catch(() => "");
-  console.error(`MailerLite responded ${res.status}: ${detail}`);
-
-  if (res.status === 422) {
-    return Response.json(
-      { error: "Please enter a valid email address." },
-      { status: 422 }
-    );
-  }
-
+  console.error(`MailerLite form responded ${res.status}:`, result);
   return Response.json(
     { error: "Something went wrong. Please try again." },
     { status: 502 }
