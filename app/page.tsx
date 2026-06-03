@@ -62,7 +62,7 @@ export default function Home() {
                 <span className="accent">failover built in.</span>
               </h1>
               <p className="lede">
-                HyperionDB turns a single Postgres database into a self-healing cluster. Add nodes as you
+                HyperionDB turns a Postgres database into a self-healing cluster. Add nodes as you
                 grow and the built-in Raft group keeps one leader elected and your data byte-identical —
                 automatically. No etcd, no Consul, no Kubernetes.
               </p>
