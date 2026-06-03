@@ -1,0 +1,281 @@
+/* ============================================================================
+   HyperionDB — Colors & Type Foundation
+   ----------------------------------------------------------------------------
+   Personality: calm reliability. Light-first, cool navy ink, blue primary,
+   cyan accent. Dark navy surfaces are reserved for code / terminal / footer.
+   Cluster-state colors (leader / follower / candidate / down) are first-class
+   because HyperionDB is about consensus & failover.
+
+   Fonts are loaded from Google Fonts (Hanken Grotesk + JetBrains Mono).
+   See README "Typography" for the substitution note.
+   ============================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ---------------------------------------------------------------- FONTS */
+  --font-sans: 'Hanken Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, monospace;
+
+  /* ----------------------------------------------------- COLOR PRIMITIVES */
+  /* Neutral — cool slate ramp (the brand's structural greys) */
+  --slate-0:   #FFFFFF;
+  --slate-25:  #FBFCFE;   /* page background, warm-cool white */
+  --slate-50:  #F5F8FC;
+  --slate-100: #EDF2F8;
+  --slate-150: #E2E8F0;   /* default hairline border */
+  --slate-200: #CBD5E1;
+  --slate-300: #AEBACC;
+  --slate-400: #8C9AAE;
+  --slate-500: #64748B;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1E293B;
+  --slate-900: #0F172A;
+  --slate-950: #0A0F1C;   /* signature near-black navy ink */
+
+  /* Primary — confident blue (actions, links, focus) */
+  --blue-50:  #EFF5FF;
+  --blue-100: #DBE8FE;
+  --blue-200: #BFD6FE;
+  --blue-300: #93BBFD;
+  --blue-400: #60A5FA;
+  --blue-500: #3B82F6;
+  --blue-600: #2563EB;   /* primary */
+  --blue-700: #1D4ED8;   /* primary hover */
+  --blue-800: #1E40AF;
+  --blue-900: #1E3A8A;
+
+  /* Accent — cyan (the "energy / live consensus" highlight) */
+  --cyan-50:  #ECFEFF;
+  --cyan-100: #CFFAFE;
+  --cyan-200: #A5F3FC;
+  --cyan-300: #67E8F9;
+  --cyan-400: #22D3EE;
+  --cyan-500: #06B6D4;   /* accent */
+  --cyan-600: #0891B2;
+  --cyan-700: #0E7490;
+
+  /* Semantic status ramps */
+  --green-50:  #ECFDF5;  --green-500: #16A34A;  --green-600: #15803D;  --green-700: #166534;
+  --amber-50:  #FFFBEB;  --amber-500: #D97706;  --amber-600: #B45309;
+  --red-50:    #FEF2F2;  --red-500:   #DC2626;  --red-600:   #B91C1C;
+
+  /* ----------------------------------------------- SEMANTIC SURFACE / INK */
+  --bg-page:      var(--slate-25);
+  --bg-surface:   var(--slate-0);     /* cards, panels */
+  --bg-subtle:    var(--slate-50);    /* striped rows, wells */
+  --bg-muted:     var(--slate-100);   /* inset / disabled fields */
+  --bg-inverse:   var(--slate-950);   /* dark code / terminal / footer */
+
+  --fg-1: var(--slate-950);           /* primary text */
+  --fg-2: var(--slate-600);           /* secondary text */
+  --fg-3: var(--slate-500);           /* tertiary / captions */
+  --fg-4: var(--slate-400);           /* placeholder / disabled */
+  --fg-on-inverse:   #E6EDF6;         /* text on dark surfaces */
+  --fg-on-inverse-2: #93A2B8;         /* secondary text on dark */
+
+  --border:        var(--slate-150);  /* default hairline */
+  --border-strong: var(--slate-200);
+  --border-inverse: rgba(255,255,255,0.10);
+
+  /* ----------------------------------------------------- SEMANTIC ACCENTS */
+  --primary:        var(--blue-600);
+  --primary-hover:  var(--blue-700);
+  --primary-soft:   var(--blue-50);
+  --primary-ring:   rgba(37,99,235,0.30);
+  --accent:         var(--cyan-500);
+  --accent-soft:    var(--cyan-50);
+  --link:           var(--blue-600);
+
+  --success: var(--green-600);  --success-soft: var(--green-50);
+  --warning: var(--amber-600);  --warning-soft: var(--amber-50);
+  --danger:  var(--red-600);    --danger-soft:  var(--red-50);
+
+  /* ----------------------------- CLUSTER STATE (Raft-native, first-class) */
+  --state-leader:    var(--cyan-500);   /* elected leader — the bright node */
+  --state-follower:  var(--slate-400);  /* healthy follower / replica */
+  --state-candidate: var(--amber-500);  /* mid-election */
+  --state-synced:    var(--green-600);  /* in-sync / byte-identical */
+  --state-down:      var(--red-500);    /* node down / partitioned */
+
+  /* The signature brand gradient — only for the sun core / hero marks */
+  --grad-sun: linear-gradient(135deg, var(--blue-500) 0%, var(--cyan-500) 100%);
+
+  /* ------------------------------------------------------- TYPE SCALE (px) */
+  /* Major-third-ish ramp tuned for product + marketing */
+  --text-display-xl: 4.25rem;  /* 68 — hero */
+  --text-display:    3.25rem;  /* 52 */
+  --text-h1:         2.5rem;   /* 40 */
+  --text-h2:         1.875rem; /* 30 */
+  --text-h3:         1.375rem; /* 22 */
+  --text-h4:         1.125rem; /* 18 */
+  --text-body-lg:    1.125rem; /* 18 */
+  --text-body:       1rem;     /* 16 */
+  --text-body-sm:    0.875rem; /* 14 */
+  --text-caption:    0.8125rem;/* 13 */
+  --text-eyebrow:    0.75rem;  /* 12 */
+
+  --leading-tight:   1.08;
+  --leading-snug:    1.25;
+  --leading-normal:  1.55;
+  --leading-relaxed: 1.7;
+
+  --tracking-tight:  -0.02em;
+  --tracking-snug:   -0.011em;
+  --tracking-normal: 0;
+  --tracking-eyebrow: 0.08em;
+
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semibold:600;
+  --weight-bold:    700;
+  --weight-black:   800;
+
+  /* ------------------------------------------------------- SPACING (4px base) */
+  --space-1: 0.25rem;  /* 4  */
+  --space-2: 0.5rem;   /* 8  */
+  --space-3: 0.75rem;  /* 12 */
+  --space-4: 1rem;     /* 16 */
+  --space-5: 1.5rem;   /* 24 */
+  --space-6: 2rem;     /* 32 */
+  --space-7: 3rem;     /* 48 */
+  --space-8: 4rem;     /* 64 */
+  --space-9: 6rem;     /* 96 */
+  --space-10:8rem;     /* 128 */
+
+  /* ------------------------------------------------------------ RADII */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;     /* default control radius */
+  --radius-lg: 12px;    /* cards */
+  --radius-xl: 16px;    /* large panels */
+  --radius-2xl: 24px;
+  --radius-pill: 999px;
+
+  /* --------------------------------------------------- SHADOWS (navy-tinted, restrained) */
+  --shadow-xs: 0 1px 2px rgba(10,15,28,0.05);
+  --shadow-sm: 0 1px 3px rgba(10,15,28,0.07), 0 1px 2px rgba(10,15,28,0.04);
+  --shadow-md: 0 4px 12px rgba(10,15,28,0.08), 0 2px 4px rgba(10,15,28,0.04);
+  --shadow-lg: 0 12px 28px rgba(10,15,28,0.10), 0 4px 8px rgba(10,15,28,0.05);
+  --shadow-xl: 0 24px 56px rgba(10,15,28,0.14), 0 8px 16px rgba(10,15,28,0.06);
+  --shadow-focus: 0 0 0 3px var(--primary-ring);
+  /* glow used sparingly on the live-leader pulse */
+  --shadow-leader-glow: 0 0 0 4px rgba(6,182,212,0.18);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 320ms;
+}
+
+/* ============================================================================
+   SEMANTIC TYPE CLASSES
+   Use these as the canonical way to set type. They compose font + size +
+   leading + tracking + weight so usage stays consistent.
+   ============================================================================ */
+
+.hyp-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-eyebrow);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.hyp-display-xl {
+  font-family: var(--font-sans);
+  font-size: var(--text-display-xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  font-weight: var(--weight-bold);
+  color: var(--fg-1);
+}
+
+.hyp-display {
+  font-family: var(--font-sans);
+  font-size: var(--text-display);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  font-weight: var(--weight-bold);
+  color: var(--fg-1);
+}
+
+.hyp-h1 {
+  font-family: var(--font-sans);
+  font-size: var(--text-h1);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-snug);
+  font-weight: var(--weight-bold);
+  color: var(--fg-1);
+}
+
+.hyp-h2 {
+  font-family: var(--font-sans);
+  font-size: var(--text-h2);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-snug);
+  font-weight: var(--weight-semibold);
+  color: var(--fg-1);
+}
+
+.hyp-h3 {
+  font-family: var(--font-sans);
+  font-size: var(--text-h3);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-snug);
+  font-weight: var(--weight-semibold);
+  color: var(--fg-1);
+}
+
+.hyp-h4 {
+  font-family: var(--font-sans);
+  font-size: var(--text-h4);
+  line-height: var(--leading-normal);
+  font-weight: var(--weight-semibold);
+  color: var(--fg-1);
+}
+
+.hyp-body-lg {
+  font-family: var(--font-sans);
+  font-size: var(--text-body-lg);
+  line-height: var(--leading-relaxed);
+  font-weight: var(--weight-regular);
+  color: var(--fg-2);
+}
+
+.hyp-body {
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
+  font-weight: var(--weight-regular);
+  color: var(--fg-2);
+}
+
+.hyp-body-sm {
+  font-family: var(--font-sans);
+  font-size: var(--text-body-sm);
+  line-height: var(--leading-normal);
+  font-weight: var(--weight-regular);
+  color: var(--fg-2);
+}
+
+.hyp-caption {
+  font-family: var(--font-sans);
+  font-size: var(--text-caption);
+  line-height: var(--leading-normal);
+  color: var(--fg-3);
+}
+
+.hyp-code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  font-weight: var(--weight-medium);
+  background: var(--bg-muted);
+  color: var(--slate-800);
+  padding: 0.12em 0.4em;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border);
+}

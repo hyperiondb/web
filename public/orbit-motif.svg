@@ -1,0 +1,28 @@
+<svg width="640" height="640" viewBox="0 0 640 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="orbit-core" x1="270" y1="270" x2="370" y2="370" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3B82F6"></stop>
+      <stop offset="1" stop-color="#06B6D4"></stop>
+    </linearGradient>
+    <radialGradient id="orbit-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop stop-color="#06B6D4" stop-opacity="0.18"></stop>
+      <stop offset="1" stop-color="#06B6D4" stop-opacity="0"></stop>
+    </radialGradient>
+  </defs>
+  <circle cx="320" cy="320" r="300" fill="url(#orbit-glow)"></circle>
+  <circle cx="320" cy="320" r="110" stroke="#94A3B8" stroke-opacity="0.30" stroke-width="1.5"></circle>
+  <circle cx="320" cy="320" r="190" stroke="#94A3B8" stroke-opacity="0.22" stroke-width="1.5"></circle>
+  <circle cx="320" cy="320" r="280" stroke="#94A3B8" stroke-opacity="0.16" stroke-width="1.5" stroke-dasharray="2 8"></circle>
+  
+  <circle cx="320" cy="210" r="7" fill="#06B6D4"></circle>
+  <circle cx="415" cy="375" r="5" fill="#94A3B8"></circle>
+  <circle cx="225" cy="375" r="5" fill="#94A3B8"></circle>
+  
+  <circle cx="510" cy="320" r="5" fill="#94A3B8"></circle>
+  <circle cx="180" cy="450" r="5" fill="#94A3B8"></circle>
+  
+  <circle cx="320" cy="40" r="4" fill="#94A3B8" fill-opacity="0.7"></circle>
+  <circle cx="585" cy="430" r="4" fill="#94A3B8" fill-opacity="0.7"></circle>
+  
+  <circle cx="320" cy="320" r="46" fill="url(#orbit-core)"></circle>
+</svg>
